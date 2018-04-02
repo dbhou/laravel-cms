@@ -38,6 +38,26 @@ server {
     }
 }
 
+apache配置
+    ubuntu启用apache rewrite模块
+        sodu a2enmod rewrite
+    
+<VirtualHost *:80>
+	ServerName cms.com
+
+	ServerAdmin db_hou@126.com
+	DocumentRoot /var/www/cms/public
+
+	ErrorLog /var/www/logs/error.log
+	CustomLog /var/www/logs/access.log combined
+
+	<Directory /var/www/cms/public/>  
+		AllowOverride All
+		Options Indexes FollowSymLinks
+		Require all granted  
+	</Directory>
+</VirtualHost>
+
 优化自动加载
     composer install --optimize-autoloader
 优化配置加载
